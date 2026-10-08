@@ -1,0 +1,20 @@
+// Prisma schema for ReleaseCheck
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Release {
+  id             Int      @id @default(autoincrement())
+  name           String
+  dueDate        DateTime
+  additionalInfo String?
+  completedSteps Json
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
